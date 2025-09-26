@@ -1,9 +1,17 @@
 package tests;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
 import utils.ScreenshotUtil;
 
 public class BaseTest {
@@ -27,5 +35,11 @@ public class BaseTest {
         if (driver != null) {
             driver.quit();
         }
+    }
+    
+ // Generic explicit wait helper
+    protected WebElement waitForElement(By locator, int seconds) {
+        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        return waiter.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }
