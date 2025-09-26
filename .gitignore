@@ -1,0 +1,21 @@
+# Maven build directory(created by default)
+/target/
+
+# TestNG reports(created by default)
+/test-output/
+
+# Screenshots from failed tests(created manually)
+/screenshots/
+
+# Eclipse project files(Eclipse junk files)
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA project files (optional, in case repo is opened in IntelliJ by someone else)
+.idea/
+*.iml
+
+# Logs
+*.log
+
