@@ -5,14 +5,31 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.InvalidArgumentException;
 import pages.FileUploadPage;
 
+import java.io.File;
+import java.net.URL;
+
 public class FileUploadTest extends BaseTest {
+
+    /* 
+     * Helper: get file path from resources folder
+     * System.Property("user.dir") - sometimes causes issue on CLI runs
+     * so using this to get dynamic path
+     * */
+    private String getResourceFilePath(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("File not found: " + fileName);
+        }
+        return new File(resource.getFile()).getAbsolutePath();
+    }
 
     @Test
     public void testValidFileUpload() {
         driver.get(baseUrl + "/upload");
         FileUploadPage fileUploadPage = new FileUploadPage(driver);
 
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/testfile.txt";
+        String filePath = getResourceFilePath("testfile.txt");
         fileUploadPage.uploadFile(filePath);
 
         Assert.assertEquals(
@@ -27,6 +44,7 @@ public class FileUploadTest extends BaseTest {
         driver.get(baseUrl + "/upload");
         FileUploadPage fileUploadPage = new FileUploadPage(driver);
 
+        // Skip sendKeys; just click Upload button directly
         fileUploadPage.clickUploadWithoutFile();
 
         boolean noFileDisplayed = false;
@@ -44,14 +62,13 @@ public class FileUploadTest extends BaseTest {
         );
     }
 
-
     @Test
     public void testMultipleFileUploadBoundary() {
         driver.get(baseUrl + "/upload");
         FileUploadPage fileUploadPage = new FileUploadPage(driver);
 
-        String file1 = System.getProperty("user.dir") + "/src/test/resources/file1.txt";
-        String file2 = System.getProperty("user.dir") + "/src/test/resources/file2.txt";
+        String file1 = getResourceFilePath("file1.txt");
+        String file2 = getResourceFilePath("file2.txt");
 
         boolean exceptionThrown = false;
         try {

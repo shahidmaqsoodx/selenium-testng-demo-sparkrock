@@ -1,5 +1,7 @@
 package pages;
 
+import java.io.File;
+import java.net.URL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,5 +45,17 @@ public class FileUploadPage {
         WebElement uploadBtn = waitForElement(uploadButton, 5);
         uploadBtn.click();
     }
+    
+
+
+    public String getResourceFilePath(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        URL resource = classLoader.getResource(fileName);
+        if (resource == null) {
+            throw new IllegalArgumentException("File not found: " + fileName);
+        }
+        return new File(resource.getFile()).getAbsolutePath();
+    }
+
 
 }
