@@ -80,7 +80,8 @@ mvn clean test
 ### Reports:
 - HTML report → `test-output/`  
 - Screenshots on failure → `screenshots/`  
-
+- A sample of passing TestNG reports is included in **[test-output/](https://github.com/shahidmaqsoodx/selenium-testng-demo-sparkrock/tree/main/test-output)**
+- A **[live recording demo](https://youtu.be/iaWm1FGdow8)** for this project is avaialble here with **timestamps** in description.
 ---
 
 
