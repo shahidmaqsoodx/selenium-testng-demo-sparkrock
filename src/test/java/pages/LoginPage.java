@@ -10,11 +10,11 @@ import java.time.Duration;
 public class LoginPage {
     private WebDriver driver;
 
-    // Locators
-    private By usernameField = By.id("username");
+    // Locators (To Be Defined)
+    private By usernameField = By.id("username"); 
     private By passwordField = By.id("password");
     private By loginButton = By.cssSelector("button[type='submit']");
-    private By flashMessage = By.id("flash");
+    private By flashMessage = By.id("flash");;
 
     // Constructor
     public LoginPage(WebDriver driver) {
@@ -29,24 +29,24 @@ public class LoginPage {
 
     //Steps
     public void setUsername(String username) {
-        waitForElement(usernameField, 5).sendKeys(username);
+    	waitForElement(usernameField,5).sendKeys(username);;
     }
 
     public void setPassword(String password) {
-        waitForElement(passwordField, 5).sendKeys(password);
+    	driver.findElement(passwordField).sendKeys(password);
     }
 
     public void clickLogin() {
-        waitForElement(loginButton, 5).click();
+    	driver.findElement(loginButton).click();
     }
 
     public String getFlashMessage() {
-        return waitForElement(flashMessage, 5).getText();
+    	return driver.findElement(flashMessage).getText();
     }
 
     public void loginAs(String username, String password) {
-        setUsername(username);
-        setPassword(password);
-        clickLogin();
+    	setUsername(username);
+    	setPassword(password);
+    	clickLogin();
     }
 }
