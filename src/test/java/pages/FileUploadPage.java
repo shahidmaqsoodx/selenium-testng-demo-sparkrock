@@ -18,7 +18,7 @@ public class FileUploadPage {
         this.driver = driver;
     }
 
-    // Local explicit waiter
+    // Private explicit wait method (page-specific as this "page" class doesn't extend BaseTest.java)
     private WebElement waitForElement(By locator, int seconds) {
         WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         return waiter.until(ExpectedConditions.visibilityOfElementLocated(locator));

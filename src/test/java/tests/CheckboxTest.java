@@ -15,7 +15,7 @@ public class CheckboxTest extends BaseTest {
         boolean before = checkboxPage.isCheckboxSelected(0);
         checkboxPage.toggleCheckbox(0);
         boolean after = checkboxPage.isCheckboxSelected(0);
-
+        System.out.println(System.clearProperty("user.dir"));
         // Assert state changed
         Assert.assertNotEquals(
                 before,
