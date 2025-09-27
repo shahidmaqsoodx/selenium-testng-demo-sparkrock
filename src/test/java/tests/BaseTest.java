@@ -20,7 +20,7 @@ public class BaseTest {
     
     @BeforeMethod
     public void setupTest() {
-        // Selenium Manager (Selenium 4.6+) handles driver download & path setup automatically
+        //Selenium Manager (Selenium 4.6+) handles driver download & path setup automatically (No WebDriverManager library needed)
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

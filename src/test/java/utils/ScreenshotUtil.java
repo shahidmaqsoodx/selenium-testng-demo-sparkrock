@@ -12,7 +12,7 @@ public class ScreenshotUtil {
 
     public static void takeScreenshot(WebDriver driver, String testName) {
         try {
-            TakesScreenshot ts = (TakesScreenshot)driver; //Down casting
+            TakesScreenshot ts = (TakesScreenshot)driver; //Down-casting (explicit)
         	File src = ts.getScreenshotAs(OutputType.FILE); 
 
             // Ensure screenshots folder exists

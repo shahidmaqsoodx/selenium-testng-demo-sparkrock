@@ -19,13 +19,13 @@ public class SecureAreaPage {
         this.driver = driver;
     }
 
-    // Private explicit wait helper (page-specific)
+    // Private explicit wait method (page-specific as it doesn't extend BaseTest)
     private WebElement waitForElement(By locator, int seconds) {
         WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         return waiter.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    // Actions
+    // Steps
     public String getHeaderText() {
         return waitForElement(header, 5).getText();
     }
